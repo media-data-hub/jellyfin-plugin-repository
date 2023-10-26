@@ -1,0 +1,11 @@
+[
+  {
+    "guid": "88ce23bd-f56f-4269-9949-e734326e9797",
+    "name": "Media Data Hub",
+    "description": "Read metadata from Media Data Hub",
+    "overview": "Read metadata from Media Data Hub",
+    "owner": "jellyfin",
+    "category": "Joshua Avalon",
+    "versions": []
+  }
+]
