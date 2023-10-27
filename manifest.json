@@ -6,6 +6,23 @@
     "overview": "Read metadata from Media Data Hub",
     "owner": "jellyfin",
     "category": "Joshua Avalon",
-    "versions": []
+    "versions": [
+      {
+        "version": "1.1.0",
+        "changelog": "See CHANGELOG.md",
+        "targetAbi": "10.8.11.0",
+        "sourceUrl": "https://github.com/media-data-hub/jellyfin-plugin/releases/download/v1.1.0/media-data-hub.zip",
+        "checksum": "8e2169852f6d62eed77f5c49d0fb60bc",
+        "timestamp": "2023-10-27T03:55:56Z"
+      },
+      {
+        "version": "1.0.0",
+        "changelog": "See CHANGELOG.md",
+        "targetAbi": "10.8.11.0",
+        "sourceUrl": "https://github.com/media-data-hub/jellyfin-plugin/releases/download/v1.0.0/media-data-hub.zip",
+        "checksum": "40f5fedb20d49d356ba7934ccd0d73bb",
+        "timestamp": "2023-10-26T08:32:03Z"
+      }
+    ]
   }
 ]
