@@ -79,10 +79,10 @@ async function main(): Promise<void> {
     console.warn("Cannot find plugin by GUID");
     return;
   }
-  if (plugin.versions.find(v => v.version === csVersion)) {
-    console.warn(`Version already exists (${csVersion})`);
-    return;
-  }
+  // if (plugin.versions.find(v => v.version === csVersion)) {
+  //   console.warn(`Version already exists (${csVersion})`);
+  //   return;
+  // }
   const [checksum, [timestamp, sourceUrl]] = await Promise.all([
     getChecksum(data.assets),
     getTimestamp(data.assets)
