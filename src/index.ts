@@ -1,7 +1,7 @@
 import { Octokit } from "@octokit/action";
 import { fileURLToPath } from "node:url";
 import { createWriteStream } from "node:fs";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { Readable } from "node:stream";
 import { finished } from "node:stream/promises";
@@ -79,10 +79,10 @@ async function main(): Promise<void> {
     console.warn("Cannot find plugin by GUID");
     return;
   }
-  // if (plugin.versions.find(v => v.version === csVersion)) {
-  //   console.warn(`Version already exists (${csVersion})`);
-  //   return;
-  // }
+  if (plugin.versions.find(v => v.version === csVersion)) {
+    console.warn(`Version already exists (${csVersion})`);
+    return;
+  }
   const [checksum, [sourceUrl, timestamp]] = await Promise.all([
     getChecksum(data.assets),
     getTimestamp(data.assets)
@@ -96,7 +96,9 @@ async function main(): Promise<void> {
     timestamp
   };
   plugin.versions.unshift(newVersion);
-  console.log(JSON.stringify(manifest, null, 2));
+  await writeFile(manifestPath, JSON.stringify(manifest, null, 2), {
+    encoding: "utf-8"
+  });
 }
 
 main();
