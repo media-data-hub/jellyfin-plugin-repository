@@ -83,7 +83,7 @@ async function main(): Promise<void> {
   //   console.warn(`Version already exists (${csVersion})`);
   //   return;
   // }
-  const [checksum, [timestamp, sourceUrl]] = await Promise.all([
+  const [checksum, [sourceUrl, timestamp]] = await Promise.all([
     getChecksum(data.assets),
     getTimestamp(data.assets)
   ]);
@@ -95,7 +95,8 @@ async function main(): Promise<void> {
     checksum,
     timestamp
   };
-  console.log(newVersion);
+  plugin.versions.unshift(newVersion);
+  console.log(JSON.stringify(manifest, null, 2));
 }
 
 main();
