@@ -8,6 +8,14 @@
     "category": "Joshua Avalon",
     "versions": [
       {
+        "version": "1.5.0.0",
+        "changelog": "See https://github.com/media-data-hub/jellyfin-plugin/releases/tag/v1.5.0",
+        "targetAbi": "10.8.11.0",
+        "sourceUrl": "https://github.com/media-data-hub/jellyfin-plugin/releases/download/v1.5.0/media-data-hub.zip",
+        "checksum": "9bdcaf3b4ccd2169601b5349d379cb93",
+        "timestamp": "2023-11-16T08:04:28Z"
+      },
+      {
         "version": "1.4.1.0",
         "changelog": "See https://github.com/media-data-hub/jellyfin-plugin/releases/tag/v1.4.1",
         "targetAbi": "10.8.11.0",
