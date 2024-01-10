@@ -90,7 +90,7 @@ async function main(): Promise<void> {
   const newVersion: PluginVersion = {
     version: csVersion,
     changelog: `See https://github.com/media-data-hub/jellyfin-plugin/releases/tag/${data.tag_name}`,
-    targetAbi: "10.8.11.0",
+    targetAbi: "10.8.13.0",
     sourceUrl,
     checksum,
     timestamp
