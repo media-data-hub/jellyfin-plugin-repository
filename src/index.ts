@@ -24,7 +24,7 @@ async function getChecksum(assets: Asset[]): Promise<string> {
   return res.text();
 }
 
-async function getTimestamp(assets: Asset[]): Promise<[string, string]> {
+async function getTimestamp(assets: Asset[]): Promise<[string, string, string]> {
   const asset = assets.find(a => a.name === "media-data-hub.zip");
   if (!asset) {
     throw new Error("Cannot find checksum");
@@ -39,7 +39,7 @@ async function getTimestamp(assets: Asset[]): Promise<[string, string]> {
   const zip = new nodeStreamZip.async({ file: "media-data-hub.zip" });
   const data = await zip.entryData("meta.json");
   const meta = JSON.parse(data.toString("utf-8"));
-  return [asset.browser_download_url, meta.timestamp];
+  return [asset.browser_download_url, meta.timestamp, meta.targetAbi];
 }
 
 async function main(): Promise<void> {
@@ -83,14 +83,14 @@ async function main(): Promise<void> {
     console.warn(`Version already exists (${csVersion})`);
     return;
   }
-  const [checksum, [sourceUrl, timestamp]] = await Promise.all([
+  const [checksum, [sourceUrl, timestamp, targetAbi]] = await Promise.all([
     getChecksum(data.assets),
     getTimestamp(data.assets)
   ]);
   const newVersion: PluginVersion = {
     version: csVersion,
     changelog: `See https://github.com/media-data-hub/jellyfin-plugin/releases/tag/${data.tag_name}`,
-    targetAbi: "10.8.13.0",
+    targetAbi,
     sourceUrl,
     checksum,
     timestamp
