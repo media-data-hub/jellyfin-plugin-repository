@@ -61,7 +61,7 @@ async function main(): Promise<void> {
     console.warn("Empty data");
     return;
   }
-  const versionRegex = /^v(?<version>\d\.\d\.\d)$/u;
+  const versionRegex = /^v(?<version>\d+\.\d+\.\d+)$/u;
   const regexResult = versionRegex.exec(data.tag_name);
   const version = regexResult?.groups?.version;
   if (!version) {
